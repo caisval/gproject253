@@ -12,26 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.lab_rest.R;
 import com.example.lab_rest.model.Book;
+import com.example.lab_rest.model.Event;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
 
     /**
      * Create ViewHolder class to bind list item view
      */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
-        public TextView tvTitle;
-        public TextView tvAuthor;
+        public TextView tvEvent_name;
         public TextView tvDescription;
-        public ImageView imgBookCover;
+        public TextView tvLocation;
+        public TextView tvDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvAuthor = itemView.findViewById(R.id.tvAuthor);
+            tvEvent_name = itemView.findViewById(R.id.tvEvent_name);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-//            imgBookCover = itemView.findViewById(R.id.imgBookCover);
+            tvLocation = itemView.findViewById(R.id.tvLocation);
+            tvDate = itemView.findViewById(R.id.tvDate);
 
             itemView.setOnLongClickListener(this);  //register long click action to this viewholder instance
         }
@@ -46,12 +47,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     //////////////////////////////////////////////////////////////////////
     // adapter class definitions
 
-    private List<Book> bookListData;   // list of book objects
+    private List<Event> eventListData;   // list of book objects
     private Context mContext;       // activity context
     private int currentPos;         // currently selected item (long press)
 
-    public BookAdapter(Context context, List<Book> listData) {
-        bookListData = listData;
+    public EventAdapter(Context context, List<Event> listData) {
+        eventListData = listData;
         mContext = context;
     }
 
@@ -73,32 +74,27 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // bind data to the view holder instance
-        Book m = bookListData.get(position);
-        holder.tvTitle.setText(m.getName());
-        holder.tvAuthor.setText(m.getAuthor());
+        Event m = eventListData.get(position);
+        holder.tvEvent_name.setText(m.getEvent_name());
         holder.tvDescription.setText(m.getDescription());
+        holder.tvLocation.setText(m.getLocation());
+        holder.tvDate.setText(m.getDate());
 
-        // Use Glide to load the image into the ImageView
-        Glide.with(mContext)
-                .load("https://codelah.my/bakri/api/" + m.getImage())
-                .placeholder(R.drawable.default_cover) // Placeholder image if the URL is empty
-                .error(R.drawable.default_cover) // Error image if there is a problem loading the image
-                .into(holder.imgBookCover);
     }
 
     @Override
     public int getItemCount() {
-        return bookListData.size();
+        return eventListData.size();
     }
 
     /**
      * return book object for currently selected book (index already set by long press in viewholder)
      * @return
      */
-    public Book getSelectedItem() {
+    public Event getSelectedItem() {
         // return the book record if the current selected position/index is valid
-        if(currentPos>=0 && bookListData !=null && currentPos<bookListData.size()) {
-            return bookListData.get(currentPos);
+        if(currentPos>=0 && eventListData !=null && currentPos<eventListData.size()) {
+            return eventListData.get(currentPos);
         }
         return null;
     }

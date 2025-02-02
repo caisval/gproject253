@@ -70,15 +70,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void bookListClicked(View view) {
+    public void eventListClicked(View view) {
         // forward user to BookListActivity
-        Intent intent = new Intent(getApplicationContext(), BookListActivity.class);
+        Intent intent = new Intent(getApplicationContext(), EventListActivity.class);
         startActivity(intent);
     }
 
-    public void borrowedListClicked(View view) {
-        // forward user to BorrowListActivity
-        Intent intent = new Intent(getApplicationContext(), BorrowedListActivity.class);
-        startActivity(intent);
-    }
+//    public void borrowedListClicked(View view) {
+//        // forward user to BorrowListActivity
+//        Intent intent = new Intent(getApplicationContext(), BorrowedListActivity.class);
+//        startActivity(intent);
+//    }
 }

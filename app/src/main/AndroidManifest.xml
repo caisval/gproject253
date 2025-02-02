@@ -36,16 +36,16 @@
             android:name=".BorrowedListActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateBookActivity"
+            android:name=".UpdateEventActivity"
             android:exported="false" />
         <activity
-            android:name=".NewBookActivity"
+            android:name=".NewEventActivity"
             android:exported="false" />
         <activity
-            android:name=".BookDetailsActivity"
+            android:name=".EventDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".BookListActivity"
+            android:name=".EventListActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

@@ -1,7 +1,6 @@
 package com.example.lab_rest;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -14,26 +13,27 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.bumptech.glide.Glide;
 import com.example.lab_rest.model.Book;
+import com.example.lab_rest.model.Event;
 import com.example.lab_rest.model.User;
 import com.example.lab_rest.remote.ApiUtils;
 import com.example.lab_rest.remote.BookService;
+import com.example.lab_rest.remote.EventService;
 import com.example.lab_rest.sharedpref.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookDetailsActivity extends AppCompatActivity {
+public class EventDetailsActivity extends AppCompatActivity {
 
-    private BookService bookService;
+    private EventService eventService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_book_details);
+        setContentView(R.layout.activity_event_details);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -44,7 +44,8 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         // get book id sent by BookListActivity, -1 if not found
         Intent intent = getIntent();
-        int bookId = intent.getIntExtra("book_id", -1);
+        int eventId = intent.getIntExtra("event_id", -1);
+        Log.d("MyApp", "Received event_id: " + eventId);
 
         // get user info from SharedPreferences
         SharedPrefManager spm = new SharedPrefManager(getApplicationContext());
@@ -52,52 +53,41 @@ public class BookDetailsActivity extends AppCompatActivity {
         String token = user.getToken();
 
         // get book service instance
-        bookService = ApiUtils.getBookService();
+        eventService = ApiUtils.getEventService();
 
         // execute the API query. send the token and book id
-        bookService.getBook(token, bookId).enqueue(new Callback<Book>() {
+        eventService.getEvent(token, eventId).enqueue(new Callback<Event>() {
 
             @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
+            public void onResponse(Call<Event> call, Response<Event> response) {
                 // for debug purpose
-                Log.d("MyApp:", "Response: " + response.raw().toString());
+                Log.d("MyApp:", "Response Connected Success: " + response.raw().toString());
 
                 if (response.code() == 200) {
                     // server return success
+                    Log.d("MyApp2:", "Response Connected Success: " + response.raw().toString());
 
                     // get book object from response
-                    Book book = response.body();
+                    Event event = response.body();
+                    Log.d("MyApp3:", "Response Connected Success: " + event);
 
                     // get references to the view elements
-                    TextView tvTitle = findViewById(R.id.tvTitle);
-                    TextView tvDesc = findViewById(R.id.tvDescription);
-                    TextView tvAuthor = findViewById(R.id.tvAuthor);
-                    TextView tvISBN = findViewById(R.id.tvISBN);
-                    TextView tvYear = findViewById(R.id.tvYear);
-                    TextView tvCreatedAt = findViewById(R.id.tvCreatedAt);
-                    TextView tvUpdatedAt = findViewById(R.id.tvUpdatedAt);
+                    TextView tvEvent_name = findViewById(R.id.tvEvent_name);
+                    TextView tvDescription = findViewById(R.id.tvDescription);
+                    TextView tvLocation = findViewById(R.id.tvLocation);
+                    TextView tvDate = findViewById(R.id.tvDate);
                     TextView tvCategory = findViewById(R.id.tvCategory);
-                    ImageView imgBookCover = findViewById(R.id.imgBookCover);
+                    TextView tvOrganizer_id = findViewById(R.id.tvOrganizer_id);
 
                     // set values
-                    tvTitle.setText(book.getName());
-                    tvAuthor.setText(book.getAuthor());
-                    tvISBN.setText(book.getIsbn());
-                    tvYear.setText(book.getYear());
-                    tvDesc.setText(book.getDescription());
-                    tvCreatedAt.setText(book.getCreatedAt());
-                    tvUpdatedAt.setText(book.getUpdatedAt());
-                    if (book.getCategory() != null)
-                        tvCategory.setText(book.getCategory().getCategoryName());
-                    else
-                        tvCategory.setText("Category no selected");
+                    Log.d("MyApp4:", "Information Retrieved : " + event.getEvent_name() + event.getDescription() + event.getLocation() + event.getDate() + event.getCategory() + event.getOrganizer_id());
+                    tvEvent_name.setText(event.getEvent_name());
+                    tvDescription.setText(event.getDescription());
+                    tvLocation.setText(event.getLocation());
+                    tvDate.setText(event.getDate());
+                    tvCategory.setText(event.getCategory());
+                    tvOrganizer_id.setText(String.valueOf(event.getOrganizer_id()));
 
-                    // Use Glide to load the image into the ImageView
-                    com.bumptech.glide.Glide.with(getApplicationContext())
-                            .load("https://codelah.my/bakri/api/" + book.getImage())
-                            .placeholder(R.drawable.default_cover) // Placeholder image if the URL is empty
-                            .error(R.drawable.default_cover) // Error image if there is a problem loading the image
-                            .into(imgBookCover);
                 }
                 else if (response.code() == 401) {
                     // unauthorized error. invalid token, ask user to relogin
@@ -112,8 +102,8 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Book> call, Throwable t) {
-                Toast.makeText(null, "Error connecting", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<Event> call, Throwable t) {
+                Toast.makeText(EventDetailsActivity.this, "Error connecting", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -1,6 +1,5 @@
 package com.example.lab_rest;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,11 +21,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab_rest.adapter.BookAdapter;
+import com.example.lab_rest.adapter.EventAdapter;
 import com.example.lab_rest.model.Book;
 import com.example.lab_rest.model.DeleteResponse;
+import com.example.lab_rest.model.Event;
 import com.example.lab_rest.model.User;
 import com.example.lab_rest.remote.ApiUtils;
 import com.example.lab_rest.remote.BookService;
+import com.example.lab_rest.remote.EventService;
 import com.example.lab_rest.sharedpref.SharedPrefManager;
 
 import java.util.List;
@@ -35,17 +37,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookListActivity extends AppCompatActivity {
+public class EventListActivity extends AppCompatActivity {
 
-    private BookService bookService;
-    private RecyclerView rvBookList;
-    private BookAdapter adapter;
+    private EventService eventService;
+    private RecyclerView rvEventList;
+    private EventAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_book_list);
+        setContentView(R.layout.activity_event_list);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -53,10 +55,10 @@ public class BookListActivity extends AppCompatActivity {
         });
 
         // get reference to the RecyclerView bookList
-        rvBookList = findViewById(R.id.rvBookList);
+        rvEventList = findViewById(R.id.rvEventList);
 
         //register for context menu
-        registerForContextMenu(rvBookList);
+        registerForContextMenu(rvEventList);
 
         // fetch and update book list
         updateRecyclerView();
@@ -69,32 +71,32 @@ public class BookListActivity extends AppCompatActivity {
         String token = user.getToken();
 
         // get book service instance
-        bookService = ApiUtils.getBookService();
+        eventService = ApiUtils.getEventService();
 
         // execute the call. send the user token when sending the query
-        bookService.getAllBooks(token).enqueue(new Callback<List<Book>>() {
+        eventService.getAllEvents(token).enqueue(new Callback<List<Event>>() {
             @Override
-            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                 // for debug purpose
                 Log.d("MyApp:", "Response: " + response.raw().toString());
 
                 if (response.code() == 200) {
                     // Get list of book object from response
-                    List<Book> books = response.body();
+                    List<Event> events = response.body();
 
                     // initialize adapter
-                    adapter = new BookAdapter(getApplicationContext(), books);
+                    adapter = new EventAdapter(getApplicationContext(), events);
 
                     // set adapter to the RecyclerView
-                    rvBookList.setAdapter(adapter);
+                    rvEventList.setAdapter(adapter);
 
                     // set layout to recycler view
-                    rvBookList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    rvEventList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
                     // add separator between item in the list
-                    DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvBookList.getContext(),
+                    DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvEventList.getContext(),
                             DividerItemDecoration.VERTICAL);
-                    rvBookList.addItemDecoration(dividerItemDecoration);
+                    rvEventList.addItemDecoration(dividerItemDecoration);
                 }
                 else if (response.code() == 401) {
                     // invalid token, ask user to relogin
@@ -109,7 +111,7 @@ public class BookListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Book>> call, Throwable t) {
+            public void onFailure(Call<List<Event>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error connecting to the server", Toast.LENGTH_LONG).show();
                 Log.e("MyApp:", t.toString());
             }
@@ -117,17 +119,17 @@ public class BookListActivity extends AppCompatActivity {
     }
 
     /**
-     * Delete book record. Called by contextual menu "Delete"
-     * @param selectedBook - book selected by user
+     * Delete event record. Called by contextual menu "Delete"
+     * @param selectedEvent - event selected by user
      */
-    private void doDeleteBook(Book selectedBook) {
+    private void doDeleteEvent(Event selectedEvent) {
         // get user info from SharedPreferences
         SharedPrefManager spm = new SharedPrefManager(getApplicationContext());
         User user = spm.getUser();
 
         // prepare REST API call
-        BookService bookService = ApiUtils.getBookService();
-        Call<DeleteResponse> call = bookService.deleteBook(user.getToken(), selectedBook.getId());
+        EventService eventService = ApiUtils.getEventService();
+        Call<DeleteResponse> call = eventService.deleteEvent(user.getToken(), selectedEvent.getEvent_id());
 
         // execute the call
         call.enqueue(new Callback<DeleteResponse>() {
@@ -135,7 +137,7 @@ public class BookListActivity extends AppCompatActivity {
             public void onResponse(Call<DeleteResponse> call, Response<DeleteResponse> response) {
                 if (response.code() == 200) {
                     // 200 means OK
-                    displayAlert("Book successfully deleted");
+                    displayAlert("Event successfully deleted");
                     // update data in list view
                     updateRecyclerView();
                 }
@@ -194,53 +196,57 @@ public class BookListActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.book_context_menu, menu);
+        inflater.inflate(R.menu.event_context_menu, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        Book selectedBook = adapter.getSelectedItem();
-        Log.d("MyApp", "selected "+selectedBook.toString());    // debug purpose
+        Event selectedEvent = adapter.getSelectedItem();
+        Log.d("MyApp", "selected "+selectedEvent.toString());    // debug purpose
 
         if (item.getItemId() == R.id.menu_details) {
             // user clicked details contextual menu
-            doViewDetails(selectedBook);
+            doViewDetails(selectedEvent);
         }
         else if (item.getItemId() == R.id.menu_delete) {
             // user clicked the delete contextual menu
-            doDeleteBook(selectedBook);
-        } else if (item.getItemId() == R.id.menu_borrow) {
-            // user clicked borrow book
-            doBorrowBook(selectedBook);
-        } else if (item.getItemId() == R.id.menu_update) {
+            doDeleteEvent(selectedEvent);
+        }
+//        else if (item.getItemId() == R.id.menu_borrow) {
+//            // user clicked borrow book
+//            doBorrowEvent(selectedEvent);
+//            }
+         else if (item.getItemId() == R.id.menu_update) {
             // user clicked the update contextual menu
-            doUpdateBook(selectedBook);
+            doUpdateEvent(selectedEvent);
         }
 
         return super.onContextItemSelected(item);
     }
 
-    private void doBorrowBook(Book selectedBook) {
-        Log.d("MyApp:", "borrowing book: " + selectedBook.toString());
-        // forward user to BorrowBookActivity, passing the selected book id
-        Intent intent = new Intent(getApplicationContext(), BorrowAddActivity.class);
-        intent.putExtra("book_id", selectedBook.getId());
-        startActivity(intent);
-    }
-
-    private void doUpdateBook(Book selectedBook) {
-        Log.d("MyApp:", "updating book: " + selectedBook.toString());
+//    private void doBorrowEvent(Event selectedEvent) {
+//        Log.d("MyApp:", "borrowing event: " + selectedEvent.toString());
+//        // forward user to BorrowBookActivity, passing the selected book id
+//        Intent intent = new Intent(getApplicationContext(), BorrowAddActivity.class);
+//        intent.putExtra("event_id", selectedEvent.getEvent_id());
+//        startActivity(intent);
+//    }
+//
+    private void doUpdateEvent(Event selectedEvent) {
+        Log.d("MyApp:", "updating event: " + selectedEvent.toString());
         // forward user to UpdateBookActivity, passing the selected book id
-        Intent intent = new Intent(getApplicationContext(), UpdateBookActivity.class);
-        intent.putExtra("book_id", selectedBook.getId());
+        // forward user to UpdateBookActivity, passing the selected book id
+        Intent intent = new Intent(getApplicationContext(), UpdateEventActivity.class);
+        intent.putExtra("event_id", selectedEvent.getEvent_id());
         startActivity(intent);
     }
 
-    private void doViewDetails(Book selectedBook) {
-        Log.d("MyApp:", "viewing details: " + selectedBook.toString());
+    private void doViewDetails(Event selectedEvent) {
+        Log.d("MyApp:", "viewing details: " + selectedEvent.toString());
         // forward user to BookDetailsActivity, passing the selected book id
-        Intent intent = new Intent(getApplicationContext(), BookDetailsActivity.class);
-        intent.putExtra("book_id", selectedBook.getId());
+        Intent intent = new Intent(getApplicationContext(), EventDetailsActivity.class);
+        intent.putExtra("event_id", selectedEvent.getEvent_id());
+        Log.d("MyApp", "Sent event_id: " + selectedEvent.getEvent_id());
         startActivity(intent);
     }
 
@@ -248,9 +254,9 @@ public class BookListActivity extends AppCompatActivity {
      * Action handler for Add Book floating action button
      * @param view
      */
-    public void floatingAddBookClicked(View view) {
+    public void floatingAddEventClicked(View view) {
         // forward user to NewBookActivity
-        Intent intent = new Intent(getApplicationContext(), NewBookActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NewEventActivity.class);
         startActivity(intent);
     }
 }
