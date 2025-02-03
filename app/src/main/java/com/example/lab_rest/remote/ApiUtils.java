@@ -19,8 +19,8 @@ public class ApiUtils {
 //        return RetrofitClient.getClient(BASE_URL).create(CategoryService.class);
 //    }
 //
-//    public static ParticipateService getBorrowService() {
-//        return RetrofitClient.getClient(BASE_URL).create(ParticipateService.class);
-//    }
+    public static ParticipationService getParticipationService() {
+        return RetrofitClient.getClient(BASE_URL).create(ParticipationService.class);
+    }
 
 }

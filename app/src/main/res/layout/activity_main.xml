@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnBorrowed"
+        android:id="@+id/btnParticipation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:backgroundTint="#009688"
-        android:onClick="borrowedListClicked"
-        android:text="Borrowed List"
+        android:onClick="participationListClicked"
+        android:text="Participation List"
         android:textColorLink="#E91E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

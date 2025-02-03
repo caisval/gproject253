@@ -30,10 +30,10 @@
             android:name=".BorrowAddActivity"
             android:exported="false" />
         <activity
-            android:name=".BorrowDetailsActivity"
+            android:name=".ParticipationDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".BorrowedListActivity"
+            android:name=".ParticipationListActivity"
             android:exported="false" />
         <activity
             android:name=".UpdateEventActivity"

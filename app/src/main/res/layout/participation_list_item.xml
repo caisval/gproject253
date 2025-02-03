@@ -16,17 +16,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvBorrowDate"
+        android:id="@+id/tvParticipationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
-        android:text="Borrow Date:"/>
+        android:text="Participation Date:"/>
 
-    <TextView
-        android:id="@+id/tvReturnDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBorrowDate"
-        android:text="Return Date:"
-        android:textStyle="bold"/>
 </RelativeLayout>

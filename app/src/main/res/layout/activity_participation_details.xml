@@ -10,10 +10,10 @@
     android:useDefaultMargins="true">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvEvent_name"
         android:layout_columnSpan="2"
         android:layout_gravity="center_horizontal"
-        android:text="Title"
+        android:text="Event Name"
         android:textSize="32dip" />
 
     <TextView
@@ -37,14 +37,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:text="Author:" />
+                android:text="Location:" />
 
             <TextView
-                android:id="@+id/tvAuthor"
+                android:id="@+id/tvLocation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="author" />
+                android:text="Location" />
         </LinearLayout>
 
         <LinearLayout
@@ -56,71 +56,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:text="ISBN:" />
+                android:text="Date:" />
 
             <TextView
-                android:id="@+id/tvISBN"
+                android:id="@+id/tvDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="ISBN" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Year:" />
-
-            <TextView
-                android:id="@+id/tvYear"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="year" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Created At:" />
-
-            <TextView
-                android:id="@+id/tvCreatedAt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="Created At" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Updated At:" />
-
-            <TextView
-                android:id="@+id/tvUpdatedAt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
-                android:text="Updated At" />
+                android:text="Date" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="category" />
+                android:text="Category" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,16 +94,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:text="Borrow Date:"
-                android:textStyle="bold"/>
+                android:text="Organizer ID:" />
 
             <TextView
-                android:id="@+id/tvBorrowDate"
+                android:id="@+id/tvOrganizer_id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="borrow date"
-                android:textStyle="bold"/>
+                android:text="Organizer ID" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,17 +113,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:text="Category:"
-                android:textStyle="bold"/>
+                android:text="Participation Date:" />
 
             <TextView
-                android:id="@+id/tvReturnDate"
+                android:id="@+id/tvParticipationDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="return date"
-                android:textStyle="bold"/>
+                android:text="Participation Date" />
         </LinearLayout>
+
 
 
     </LinearLayout>

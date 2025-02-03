@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".BorrowedListActivity">
+    tools:context=".ParticipationListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBorrowedList"
+        android:id="@+id/rvParticipationList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
