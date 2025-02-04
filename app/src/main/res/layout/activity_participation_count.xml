@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:padding="16dp">
+
+    <!-- Toolbar -->
+
+    <!-- Participation Count Text -->
+    <TextView
+        android:id="@+id/tvParticipationCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Total Participations: 0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <!-- Achievement Panels -->
+    <LinearLayout
+        android:id="@+id/panel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvParticipationCount"
+        android:layout_marginTop="20dp"
+        android:background="#FFD1DC"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:alpha="0.5"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 Participation Unlocked!"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/panel1"
+        android:layout_marginTop="10dp"
+        android:background="#FFD1DC"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:alpha="0.5"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 Participation Unlocked!"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/panel2"
+        android:layout_marginTop="10dp"
+        android:background="#FFD1DC"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:alpha="0.5"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 Participation Unlocked!"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/panel3"
+        android:layout_marginTop="10dp"
+        android:background="#FFD1DC"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:alpha="0.5"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 Participation Unlocked!"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/panel4"
+        android:layout_marginTop="10dp"
+        android:background="#FFD1DC"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:alpha="0.5"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 Participation Unlocked"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+</RelativeLayout>

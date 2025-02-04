@@ -76,9 +76,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void participationListClicked(View view) {
-        // forward user to BorrowListActivity
-        Intent intent = new Intent(getApplicationContext(), ParticipationListActivity.class);
-        startActivity(intent);
-    }
+//    public void participationListClicked(View view) {
+//        // forward user to BorrowListActivity
+//        Intent intent = new Intent(getApplicationContext(), ParticipationListActivity.class);
+//        startActivity(intent);
+//    }
+public void participationListClicked(View view) {
+    // forward user to BorrowListActivity
+    Intent intent = new Intent(getApplicationContext(), AdminParticipationActivity.class);
+    startActivity(intent);
+}
 }

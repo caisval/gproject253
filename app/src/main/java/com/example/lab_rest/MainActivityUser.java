@@ -81,4 +81,8 @@ public class MainActivityUser extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ParticipationListActivity.class);
         startActivity(intent);
     }
+    public void participationCountClicked(android.view.View view) {
+        Intent intent = new Intent(this, ParticipationCountActivity.class);
+        startActivity(intent);
+    }
 }

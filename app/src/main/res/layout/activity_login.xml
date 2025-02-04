@@ -158,6 +158,8 @@
             android:layout_marginTop="16dp"
             android:text="Don’t have an account? Sign Up"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 </RelativeLayout>
