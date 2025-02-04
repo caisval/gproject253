@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/main"
-    tools:context=".ParticipationListActivity">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:padding="5dp">
 
-    <LinearLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#FF1BA7"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_alignParentTop="true"
-        android:elevation="4dp">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvParticipationList"
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Title"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:text="Event Date:"/>
+    <TextView
+        android:id="@+id/tvParticipationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDate"
+        android:text="Participation Date:"/>
 
 </RelativeLayout>
