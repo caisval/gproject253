@@ -20,9 +20,9 @@
 
         <TextView
             android:id="@+id/tvTopBar"
-            android:layout_width="wrap_content"
+            android:layout_width="396dp"
             android:layout_height="wrap_content"
-            android:text="Hello User!"
+            android:text="Cloudy Care"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>
@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Welcome to Cloudy Care App"
+        android:text="Hello User !"
         android:textColor="#FFFFFF"
         android:textSize="22sp" />
 
@@ -51,6 +51,8 @@
         android:src="@drawable/volunteer_logo" />
 
     <!-- CardView for Event List Button -->
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/btnBookList"
         android:layout_width="match_parent"
