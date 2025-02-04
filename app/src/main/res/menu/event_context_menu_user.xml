@@ -7,13 +7,9 @@
         android:showAsAction="always"
         android:title="Details" />
 
-    <item android:id="@+id/menu_update"
-        android:showAsAction="always"
-        android:title="Update" />
 
-
-    <item android:id="@+id/menu_delete"
+    <item android:id="@+id/menu_participate"
         android:showAsAction="always"
-        android:title="Delete" />
+        android:title="Participate" />
 
 </menu>

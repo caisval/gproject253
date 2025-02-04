@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtUsername;
     private EditText edtPassword;
     private ProgressDialog progressDialog;
+    public static String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,13 +110,20 @@ public class LoginActivity extends AppCompatActivity {
                         displayToast("Login successful");
                         displayToast("Token: " + user.getToken());
 
+                        userRole = user.getRole();
+
                         // store value in Shared Preferences
                         SharedPrefManager spm = new SharedPrefManager(getApplicationContext());
                         spm.storeUser(user);
 
                         // forward user to MainActivity
                         finish();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        if (user.getRole().equals("admin")){
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
+                            startActivity(new Intent(getApplicationContext(), MainActivityUser.class));
+                        }
                     }
                     else {
                         // server return success but no user info replied

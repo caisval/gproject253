@@ -37,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EventListActivity extends AppCompatActivity {
+public class EventListActivityUser extends AppCompatActivity {
 
     private EventService eventService;
     private RecyclerView rvEventList;
@@ -47,7 +47,7 @@ public class EventListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_event_list);
+        setContentView(R.layout.activity_event_list_user);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -196,7 +196,7 @@ public class EventListActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.event_context_menu, menu);
+        inflater.inflate(R.menu.event_context_menu_user, menu);
     }
 
     @Override
@@ -215,8 +215,8 @@ public class EventListActivity extends AppCompatActivity {
         else if (item.getItemId() == R.id.menu_participate) {
             // user clicked borrow book
             doParticipationEvent(selectedEvent);
-            }
-         else if (item.getItemId() == R.id.menu_update) {
+        }
+        else if (item.getItemId() == R.id.menu_update) {
             // user clicked the update contextual menu
             doUpdateEvent(selectedEvent);
         }

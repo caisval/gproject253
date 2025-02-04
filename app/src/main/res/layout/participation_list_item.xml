@@ -16,10 +16,16 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvParticipationDate"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
+        android:text="Event Date:"/>
+    <TextView
+        android:id="@+id/tvParticipationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDate"
         android:text="Participation Date:"/>
 
 </RelativeLayout>

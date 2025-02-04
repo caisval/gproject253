@@ -21,12 +21,14 @@ public class ParticipationAdapter extends RecyclerView.Adapter<ParticipationAdap
      */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener {
         public TextView tvTitle;
+        public TextView tvDate;
         public TextView tvParticipationDate;
         public TextView tvReturnDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvDate = itemView.findViewById(R.id.tvDate);
             tvParticipationDate = itemView.findViewById(R.id.tvParticipationDate);
 
             itemView.setOnLongClickListener(this);  //register long click action to this viewholder instance
@@ -71,6 +73,7 @@ public class ParticipationAdapter extends RecyclerView.Adapter<ParticipationAdap
         // bind data to the view holder instance
         Participation b = participationListData.get(position);
         holder.tvTitle.setText(b.getEvent().getEvent_name());
+        holder.tvDate.setText("Event Date: " + b.getEvent().getDate());
         holder.tvParticipationDate.setText("Participation Date: " + b.getParticipation_date());
     }
 
