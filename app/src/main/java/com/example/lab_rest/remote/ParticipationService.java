@@ -1,10 +1,12 @@
 package com.example.lab_rest.remote;
 
+import com.example.lab_rest.model.DeleteResponse;
 import com.example.lab_rest.model.Participation;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -29,7 +31,8 @@ public interface ParticipationService {
     @FormUrlEncoded
     @POST("participations/{participation_id}")
     Call<Participation> updateParticipation(@Header("api-key") String apiKey, @Path("participation_id") int participation_id,
-                              @Field("user_id") int event_id, @Field("event_id") int userId,
+                              @Field("event_id") int event_id, @Field("user_id") int userId,
                               @Field("participation_date") String participation_date);
-
+    @DELETE("participations/{participation_id}")
+    Call<DeleteResponse> deleteParticipation(@Header("api-key") String api_key, @Path("participation_id") int participation_id);
 }

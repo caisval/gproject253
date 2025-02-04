@@ -27,7 +27,7 @@
             android:name=".UpdateBorrowActivity"
             android:exported="false" />
         <activity
-            android:name=".BorrowAddActivity"
+            android:name=".ParticipationAddActivity"
             android:exported="false" />
         <activity
             android:name=".ParticipationDetailsActivity"

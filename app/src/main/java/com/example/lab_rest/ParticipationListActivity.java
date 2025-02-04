@@ -23,10 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 //import com.example.lab_rest.adapter.BorrowAdapter;
 //import com.example.lab_rest.model.Borrow;
 import com.example.lab_rest.adapter.ParticipationAdapter;
+import com.example.lab_rest.model.DeleteResponse;
+import com.example.lab_rest.model.Event;
 import com.example.lab_rest.model.Participation;
 import com.example.lab_rest.model.User;
 import com.example.lab_rest.remote.ApiUtils;
 //import com.example.lab_rest.remote.BorrowService;
+import com.example.lab_rest.remote.EventService;
 import com.example.lab_rest.remote.ParticipationService;
 import com.example.lab_rest.sharedpref.SharedPrefManager;
 
@@ -168,6 +171,10 @@ public class ParticipationListActivity extends AppCompatActivity {
 //            // user clicked the update contextual menu
 //            doUpdateParticipation(selectedParticipation);
 //        }
+                else if (item.getItemId() == R.id.menu_delete) {
+            // user clicked the update contextual menu
+            doDeleteParticipation(selectedParticipation);
+        }
 
         return super.onContextItemSelected(item);
     }
@@ -186,6 +193,44 @@ public class ParticipationListActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), ParticipationDetailsActivity.class);
         intent.putExtra("participation_id", selectedParticipation.getParticipation_id());
         startActivity(intent);
+    }
+    private void doDeleteParticipation(Participation selectedParticipation) {
+        // get user info from SharedPreferences
+        SharedPrefManager spm = new SharedPrefManager(getApplicationContext());
+        User user = spm.getUser();
+
+        // prepare REST API call
+        ParticipationService participationService = ApiUtils.getParticipationService();
+        Call<DeleteResponse> call = participationService.deleteParticipation(user.getToken(), selectedParticipation.getParticipation_id());
+
+        // execute the call
+        call.enqueue(new Callback<DeleteResponse>() {
+            @Override
+            public void onResponse(Call<DeleteResponse> call, Response<DeleteResponse> response) {
+                if (response.code() == 200) {
+                    // 200 means OK
+                    displayAlert("Event Participation has been withdrawn");
+                    // update data in list view
+                    updateRecyclerView();
+                }
+                else if (response.code() == 401) {
+                    // invalid token, ask user to relogin
+                    Toast.makeText(getApplicationContext(), "Invalid session. Please login again", Toast.LENGTH_LONG).show();
+                    clearSessionAndRedirect();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Error: " + response.message(), Toast.LENGTH_LONG).show();
+                    // server return other error
+                    Log.e("MyApp: ", response.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteResponse> call, Throwable t) {
+                displayAlert("Error [" + t.getMessage() + "]");
+                Log.e("MyApp:", t.getMessage());
+            }
+        });
     }
 
 }

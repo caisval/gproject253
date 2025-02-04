@@ -212,10 +212,10 @@ public class EventListActivity extends AppCompatActivity {
             // user clicked the delete contextual menu
             doDeleteEvent(selectedEvent);
         }
-//        else if (item.getItemId() == R.id.menu_borrow) {
-//            // user clicked borrow book
-//            doBorrowEvent(selectedEvent);
-//            }
+        else if (item.getItemId() == R.id.menu_borrow) {
+            // user clicked borrow book
+            doParticipationEvent(selectedEvent);
+            }
          else if (item.getItemId() == R.id.menu_update) {
             // user clicked the update contextual menu
             doUpdateEvent(selectedEvent);
@@ -224,14 +224,14 @@ public class EventListActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
-//    private void doBorrowEvent(Event selectedEvent) {
-//        Log.d("MyApp:", "borrowing event: " + selectedEvent.toString());
-//        // forward user to BorrowBookActivity, passing the selected book id
-//        Intent intent = new Intent(getApplicationContext(), BorrowAddActivity.class);
-//        intent.putExtra("event_id", selectedEvent.getEvent_id());
-//        startActivity(intent);
-//    }
-//
+    private void doParticipationEvent(Event selectedEvent) {
+        Log.d("MyApp:", "borrowing event: " + selectedEvent.toString());
+        // forward user to BorrowBookActivity, passing the selected book id
+        Intent intent = new Intent(getApplicationContext(), ParticipationAddActivity.class);
+        intent.putExtra("event_id", selectedEvent.getEvent_id());
+        startActivity(intent);
+    }
+
     private void doUpdateEvent(Event selectedEvent) {
         Log.d("MyApp:", "updating event: " + selectedEvent.toString());
         // forward user to UpdateBookActivity, passing the selected book id
