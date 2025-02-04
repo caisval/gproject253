@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Lab_REST</string>
+    <string name="hello_admin">Hello Admin</string>
+    <string name="welcome_text">Welcome back! Manage your events with ease.</string>
+    <string name="event_list">Event List</string>
+    <string name="participation_list">Participation User List</string>
+    <string name="logout">LOGOUT</string>
+    <string name="app_name">Lab REST</string>
 </resources>
