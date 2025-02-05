@@ -50,6 +50,8 @@ public class AdminParticipationActivity extends AppCompatActivity {
         userSpinner = findViewById(R.id.spinner_users);
         rvParticipationList = findViewById(R.id.rvParticipationList);
         ImageView backButton = findViewById(R.id.back_button);
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
         }

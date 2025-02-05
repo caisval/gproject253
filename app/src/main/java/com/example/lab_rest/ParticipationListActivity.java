@@ -10,6 +10,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -60,6 +61,14 @@ public class ParticipationListActivity extends AppCompatActivity {
 
         // get reference to the RecyclerView rvBorrowedList
         rvParticipationList = findViewById(R.id.rvParticipationList);
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ParticipationListActivity.this, MainActivityUser.class);
+            startActivity(intent);
+            finish(); // Close the current activity
+        });
+
 
         //register for context menu
         registerForContextMenu(rvParticipationList);

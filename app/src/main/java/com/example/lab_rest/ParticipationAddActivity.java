@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,6 +100,12 @@ public class ParticipationAddActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
         }
+
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            finish(); // This will close the current activity and return to the previous one
+        });
 
         // get user info from SharedPreferences
         SharedPrefManager spm = new SharedPrefManager(getApplicationContext());

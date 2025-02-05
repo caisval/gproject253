@@ -1,9 +1,11 @@
 package com.example.lab_rest;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,13 @@ public class ParticipationCountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_participation_count);
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ParticipationCountActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish(); // Close the current activity
+        });
 
         tvParticipationCount = findViewById(R.id.tvParticipationCount);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

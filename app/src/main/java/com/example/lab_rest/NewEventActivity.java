@@ -120,9 +120,16 @@ public class NewEventActivity extends AppCompatActivity {
         txtLocation = findViewById(R.id.txtLocation);
         txtCategory = findViewById(R.id.txtCategory);
         tvDate = findViewById(R.id.tvDate);
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            finish(); // This will close the current activity and return to the previous one
+        });
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
         }
+
 
 
         // set default createdAt value to current date

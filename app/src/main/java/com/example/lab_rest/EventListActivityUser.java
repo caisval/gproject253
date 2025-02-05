@@ -10,6 +10,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -55,6 +56,14 @@ public class EventListActivityUser extends AppCompatActivity {
 
         // get reference to the RecyclerView bookList
         rvEventList = findViewById(R.id.rvEventList);
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(EventListActivityUser.this, MainActivityUser.class);
+            startActivity(intent);
+            finish(); // Close the current activity
+        });
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));

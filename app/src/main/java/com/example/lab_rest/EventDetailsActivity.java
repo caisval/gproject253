@@ -46,6 +46,11 @@ public class EventDetailsActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
         }
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            finish(); // This will close the current activity and return to the previous one
+        });
         // get book id sent by BookListActivity, -1 if not found
         Intent intent = getIntent();
         int eventId = intent.getIntExtra("event_id", -1);

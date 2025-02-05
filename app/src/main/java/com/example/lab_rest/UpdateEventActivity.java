@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -123,6 +124,11 @@ public class UpdateEventActivity extends AppCompatActivity {
         txtCategory = findViewById(R.id.txtCategory);
 
         tvDate = findViewById(R.id.tvDate);
+        ImageView backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(v -> {
+            finish(); // This will close the current activity and return to the previous one
+        });
 
         // retrieve book info from database using the book id
         // get user info from SharedPreferences

@@ -40,9 +40,6 @@
             android:name=".MainActivityUser"
             android:exported="false" />
         <activity
-            android:name=".UpdateBorrowActivity"
-            android:exported="false" />
-        <activity
             android:name=".ParticipationAddActivity"
             android:exported="false" />
         <activity
