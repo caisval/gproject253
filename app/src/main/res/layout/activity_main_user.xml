@@ -3,7 +3,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pink_background">
+    android:background="@drawable/bg">
 
     <!-- Top Bar -->
     <LinearLayout
@@ -111,20 +111,19 @@
             android:padding="12dp" />
     </androidx.cardview.widget.CardView>
 
-    <!-- CardView for Logout Button -->
+    <!-- CardView for Logout Button at the bottom -->
     <androidx.cardview.widget.CardView
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:layout_below="@id/btnParticipation"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="47dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="6dp"
-        app:cardBackgroundColor="#FF1BA7"
-        android:onClick="logoutClicked">
+        app:cardBackgroundColor="#D32F2F"
+        android:onClick="logoutClicked"
+        android:layout_alignParentBottom="true"> <!-- Fixed the alignment -->
 
         <TextView
             android:layout_width="wrap_content"

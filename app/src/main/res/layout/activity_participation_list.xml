@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/light_pink"
     android:id="@+id/main"
     tools:context=".ParticipationListActivity">
 
     <!-- Toolbar -->
     <LinearLayout
+        android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#FF1BA7"

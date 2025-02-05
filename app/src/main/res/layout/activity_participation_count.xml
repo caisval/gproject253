@@ -38,7 +38,7 @@
         android:layout_width="269dp"
         android:layout_height="120dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="62dp"
         android:src="@drawable/achievement" />
 
