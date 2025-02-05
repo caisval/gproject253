@@ -93,7 +93,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
                 android:src="@android:drawable/ic_menu_info_details"
-                android:tint="#FFD1DC" />
+                app:tint="#FFD1DC" />
 
             <!-- Username Field -->
             <EditText
@@ -122,7 +122,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
                 android:src="@android:drawable/ic_lock_lock"
-                android:tint="#FFD1DC" />
+                app:tint="#FFD1DC" />
 
             <!-- Password Field -->
             <EditText

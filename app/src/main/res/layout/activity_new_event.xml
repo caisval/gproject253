@@ -1,153 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:useDefaultMargins="true"
-    android:alignmentMode="alignBounds"
-    android:id="@+id/main"
-    android:columnOrderPreserved="false"
-    android:columnCount="2"
-    android:layout_marginTop="40dp"
-    >
+    android:orientation="vertical"
+    android:background="@color/light_pink"
+    android:padding="20dp">
 
-    <TextView
-        android:layout_columnSpan="2"
-        android:layout_gravity="center_horizontal"
-        android:text="Add New Event"
-        android:textSize="32dip" />
+    <!-- Header Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/hot_pink"
+        android:elevation="4dp">
 
-    <TextView
-        android:layout_columnSpan="2"
-        android:layout_gravity="center"
-        android:text="Enter event information"
-        android:textSize="16dip" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Event"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+    </androidx.appcompat.widget.Toolbar>
 
-
+    <!-- Main Card Container -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cardCornerRadius="16dp"
+        android:cardBackgroundColor="@color/white"
+        android:elevation="6dp"
+        android:padding="24dp" <!-- Adjusted to a balanced size -->
+    android:layout_marginTop="15dp">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:text="Enter event information"
+            android:textSize="16sp"
+            android:textColor="@color/dark_gray"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="14dp"/>
 
+        <!-- Form Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Event Name -->
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Event Name:" />
+                android:text="Event Name"
+                android:paddingStart="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_gray"
+                android:paddingBottom="6dp"/>
 
             <EditText
                 android:id="@+id/txtEvent_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter event name"
+                android:background="@drawable/input_field_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
+            <!-- Description -->
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Description:" />
+                android:text="Description"
+                android:paddingStart="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_gray"
+                android:paddingBottom="6dp"/>
 
             <EditText
                 android:id="@+id/txtDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:hint="Enter event description"
+                android:background="@drawable/input_field_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"
                 android:inputType="textMultiLine"
-                android:lines="2" />
-        </LinearLayout>
+                android:lines="3"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
+            <!-- Location -->
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Location:" />
+                android:text="Location"
+                android:paddingStart="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_gray"
+                android:paddingBottom="6dp"/>
 
             <EditText
                 android:id="@+id/txtLocation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter event location"
+                android:background="@drawable/input_field_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
+            <!-- Category -->
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Category:" />
+                android:text="Category"
+                android:textStyle="bold"
+                android:paddingStart="12dp"
+                android:textColor="@color/dark_gray"
+                android:paddingBottom="6dp"/>
 
             <EditText
                 android:id="@+id/txtCategory"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.75" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter event category"
+                android:background="@drawable/input_field_modern"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp"/>
         </LinearLayout>
 
-
+        <!-- Date Picker -->
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="14dp">
+
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:text="Date:" />
+                android:text="Date:"
+                android:textStyle="bold"
+                android:paddingStart="12dp"
+                android:textColor="@color/dark_gray"/>
 
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
-                android:text="YYYY-MM-DD" />
+                android:layout_weight="1"
+                android:text="YYYY-MM-DD"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"/>
 
             <Button
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pick Date"
-                android:layout_weight="0.35"
-                android:onClick="showDatePickerDialog" />
-
+                android:onClick="showDatePickerDialog"
+                android:backgroundTint="@color/hot_pink"
+                android:textColor="@color/white"
+                android:padding="12dp"/>
         </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Event"
-                android:onClick="addNewEvent" />
-
-        </LinearLayout>
-
-
+    <!-- Submit Button -->
+<Button
+android:layout_width="match_parent"
+android:layout_height="60dp"
+android:text="Add Event"
+android:onClick="addNewEvent"
+android:background="@drawable/rounded_button"
+android:textColor="@color/white"
+android:layout_marginTop="25dp"
+android:layout_marginBottom="15dp"
+android:padding="14dp"/>
 
     </LinearLayout>
-
-</GridLayout>
+SS
