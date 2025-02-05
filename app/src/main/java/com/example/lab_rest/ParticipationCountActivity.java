@@ -39,7 +39,7 @@ public class ParticipationCountActivity extends AppCompatActivity {
         ImageView backButton = findViewById(R.id.back_button);
 
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ParticipationCountActivity.this, MainActivity.class);
+            Intent intent = new Intent(ParticipationCountActivity.this, MainActivityUser.class);
             startActivity(intent);
             finish(); // Close the current activity
         });
