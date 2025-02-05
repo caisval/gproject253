@@ -1,6 +1,8 @@
 package com.example.lab_rest;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -41,7 +43,9 @@ public class EventDetailsActivity extends AppCompatActivity {
         });
 
         // retrieve book details based on selected id
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
         // get book id sent by BookListActivity, -1 if not found
         Intent intent = getIntent();
         int eventId = intent.getIntExtra("event_id", -1);

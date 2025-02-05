@@ -2,6 +2,8 @@ package com.example.lab_rest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -20,14 +22,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lab_rest.adapter.BookAdapter;
 import com.example.lab_rest.adapter.EventAdapter;
-import com.example.lab_rest.model.Book;
 import com.example.lab_rest.model.DeleteResponse;
 import com.example.lab_rest.model.Event;
 import com.example.lab_rest.model.User;
 import com.example.lab_rest.remote.ApiUtils;
-import com.example.lab_rest.remote.BookService;
 import com.example.lab_rest.remote.EventService;
 import com.example.lab_rest.sharedpref.SharedPrefManager;
 
@@ -57,6 +56,9 @@ public class EventListActivityUser extends AppCompatActivity {
         // get reference to the RecyclerView bookList
         rvEventList = findViewById(R.id.rvEventList);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
         //register for context menu
         registerForContextMenu(rvEventList);
 

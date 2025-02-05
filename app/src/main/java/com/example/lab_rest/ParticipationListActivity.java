@@ -2,6 +2,8 @@ package com.example.lab_rest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -61,6 +63,9 @@ public class ParticipationListActivity extends AppCompatActivity {
 
         //register for context menu
         registerForContextMenu(rvParticipationList);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
         // fetch and update borrowed list
         updateRecyclerView();

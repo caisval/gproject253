@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".EventListActivity">
+    android:background="#FDD1DE"    tools:context=".EventListActivity">
 
     <!-- Toolbar -->
     <LinearLayout
@@ -39,10 +39,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEventList"
-        android:layout_width="97dp"
-        android:layout_height="224dp"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"/>
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Add New Event"
+        android:onClick="floatingAddEventClicked"
+        android:src="@drawable/baseline_add_24" />
 
 </RelativeLayout>

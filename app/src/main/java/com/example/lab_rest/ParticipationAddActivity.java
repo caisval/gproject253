@@ -3,6 +3,8 @@ package com.example.lab_rest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -94,6 +96,9 @@ public class ParticipationAddActivity extends AppCompatActivity {
         // get book id sent by BookListActivity, -1 if not found
         Intent intent = getIntent();
         int eventId = intent.getIntExtra("event_id", -1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
         // get user info from SharedPreferences
         SharedPrefManager spm = new SharedPrefManager(getApplicationContext());

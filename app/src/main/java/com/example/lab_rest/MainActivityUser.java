@@ -1,6 +1,8 @@
 package com.example.lab_rest;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +34,9 @@ public class MainActivityUser extends AppCompatActivity {
 
         // get references
         tvHello = findViewById(R.id.tvHello);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
         // if the user is already logged in we will directly start
         // the main activity

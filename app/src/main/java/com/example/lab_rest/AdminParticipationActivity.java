@@ -2,6 +2,8 @@ package com.example.lab_rest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,7 +50,9 @@ public class AdminParticipationActivity extends AppCompatActivity {
         userSpinner = findViewById(R.id.spinner_users);
         rvParticipationList = findViewById(R.id.rvParticipationList);
         ImageView backButton = findViewById(R.id.back_button);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
         // Initialize RecyclerView
         rvParticipationList.setLayoutManager(new LinearLayoutManager(this));
         rvParticipationList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));

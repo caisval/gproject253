@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -119,6 +120,9 @@ public class NewEventActivity extends AppCompatActivity {
         txtLocation = findViewById(R.id.txtLocation);
         txtCategory = findViewById(R.id.txtCategory);
         tvDate = findViewById(R.id.tvDate);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
 
         // set default createdAt value to current date

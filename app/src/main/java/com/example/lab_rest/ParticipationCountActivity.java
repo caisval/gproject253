@@ -1,5 +1,7 @@
 package com.example.lab_rest;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
@@ -34,6 +36,9 @@ public class ParticipationCountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_participation_count);
 
         tvParticipationCount = findViewById(R.id.tvParticipationCount);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
         panel1 = findViewById(R.id.panel1);
         panel2 = findViewById(R.id.panel2);

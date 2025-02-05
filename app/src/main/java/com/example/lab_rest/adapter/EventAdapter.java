@@ -26,6 +26,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         public TextView tvDescription;
         public TextView tvLocation;
         public TextView tvDate;
+        public TextView tvDay;
+        public TextView tvMonth;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -33,6 +36,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvDate = itemView.findViewById(R.id.tvDate);
+            tvDay = itemView.findViewById(R.id.tvDay);
+            tvMonth = itemView.findViewById(R.id.tvMonth);
 
             itemView.setOnLongClickListener(this);  //register long click action to this viewholder instance
         }
@@ -54,6 +59,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public EventAdapter(Context context, List<Event> listData) {
         eventListData = listData;
         mContext = context;
+    }
+
+    public void setDayAndMonth(String date){
+
     }
 
     private Context getmContext() {
@@ -78,7 +87,60 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.tvEvent_name.setText(m.getEvent_name());
         holder.tvDescription.setText(m.getDescription());
         holder.tvLocation.setText(m.getLocation());
-        holder.tvDate.setText(m.getDate());
+
+
+        String day;
+        String month;
+        String date = m.getDate();
+        String[] dateParts = date.split(" ");
+        String dateOnly = dateParts[0];
+        String[] dateElements = dateOnly.split("-");
+        day = dateElements[2];  // The day is the 3rd element
+        String monthNumber = dateElements[1];  // The month is the 2nd element
+        switch (monthNumber) {
+            case "01":
+                month = "JAN";
+                break;
+            case "02":
+                month = "FEB";
+                break;
+            case "03":
+                month = "MAR";
+                break;
+            case "04":
+                month = "APR";
+                break;
+            case "05":
+                month = "MAY";
+                break;
+            case "06":
+                month = "JUN";
+                break;
+            case "07":
+                month = "JUL";
+                break;
+            case "08":
+                month = "AUG";
+                break;
+            case "09":
+                month = "SEP";
+                break;
+            case "10":
+                month = "OCT";
+                break;
+            case "11":
+                month = "NOV";
+                break;
+            case "12":
+                month = "DEC";
+                break;
+            default:
+                month = "UNKNOWN";
+        }
+
+        holder.tvDay.setText(day);
+        holder.tvMonth.setText(month);
+
 
     }
 

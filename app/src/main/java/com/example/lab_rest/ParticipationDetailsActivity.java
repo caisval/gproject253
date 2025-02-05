@@ -1,6 +1,8 @@
 package com.example.lab_rest;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -53,6 +55,9 @@ public class ParticipationDetailsActivity extends AppCompatActivity {
 
         // get book service instance
         participationService = ApiUtils.getParticipationService();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#FF1BA7"));
+        }
 
         // execute the API query. send the token and book id
        participationService.getParticipation(token, participationId).enqueue(new Callback<Participation>() {
