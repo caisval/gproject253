@@ -2,122 +2,167 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:padding="16dp">
+    android:background="#ffffff">
 
     <!-- Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FF1BA7"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-    <!-- Participation Count Text -->
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Back"
+            android:src="@android:drawable/ic_menu_revert" />
+
+        <!-- Taskbar Title -->
+        <TextView
+            android:id="@+id/taskbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Achievement"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/starIcon"
+        android:layout_width="269dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="62dp"
+        android:src="@drawable/achievement" />
+
     <TextView
         android:id="@+id/tvParticipationCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_below="@id/starIcon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="105dp"
         android:text="Total Participations: 0"
+        android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+        android:textStyle="bold" />
 
-    <!-- Achievement Panels -->
     <LinearLayout
         android:id="@+id/panel1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="73dp"
         android:layout_below="@id/tvParticipationCount"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.9"
         android:background="#FFD1DC"
         android:gravity="center"
         android:orientation="horizontal"
-        android:alpha="0.5"
         android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1 Participation Unlocked!"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/panel2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="73dp"
         android:layout_below="@id/panel1"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.9"
         android:background="#FFD1DC"
         android:gravity="center"
         android:orientation="horizontal"
-        android:alpha="0.5"
         android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2 Participation Unlocked!"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/panel3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="73dp"
         android:layout_below="@id/panel2"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.9"
         android:background="#FFD1DC"
         android:gravity="center"
         android:orientation="horizontal"
-        android:alpha="0.5"
         android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3 Participation Unlocked!"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/panel4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="73dp"
         android:layout_below="@id/panel3"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.9"
         android:background="#FFD1DC"
         android:gravity="center"
         android:orientation="horizontal"
-        android:alpha="0.5"
         android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4 Participation Unlocked!"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/panel5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="353dp"
+        android:layout_height="73dp"
         android:layout_below="@id/panel4"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="0.9"
         android:background="#FFD1DC"
         android:gravity="center"
         android:orientation="horizontal"
-        android:alpha="0.5"
         android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 Participation Unlocked"
-            android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:text="5 Participation Unlocked!"
+            android:textColor="#000000"
+            android:textSize="18sp" />
     </LinearLayout>
 
 
