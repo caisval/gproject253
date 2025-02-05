@@ -7,26 +7,31 @@
     android:id="@+id/main"
     tools:context=".ParticipationListActivity">
 
-    <!-- Toolbar with title and optional back button -->
+    <!-- Toolbar -->
     <LinearLayout
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#FF1BA7"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_alignParentTop="true"
-        android:elevation="4dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:gravity="center_vertical">
 
-        <!-- Toolbar title -->
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Back"
+            android:src="@android:drawable/ic_menu_revert" />
+
+        <!-- Taskbar Title -->
         <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/taskbar_title"
+            android:layout_width="319dp"
             android:layout_height="wrap_content"
-            android:text="My Participations"
-            android:textColor="#FFFFFF"
+            android:text="Events"
+            android:textColor="#ffffff"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -34,8 +39,8 @@
     <!-- RecyclerView for displaying participation list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvParticipationList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="111dp"
+        android:layout_height="334dp"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="8dp"
         android:padding="8dp" />
