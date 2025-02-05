@@ -38,8 +38,8 @@
         android:layout_width="269dp"
         android:layout_height="120dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="62dp"
         android:src="@drawable/achievement" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_height="73dp"
         android:layout_below="@id/tvParticipationCount"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="30dp"
         android:alpha="0.9"
         android:background="#FFD1DC"

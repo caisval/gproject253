@@ -38,11 +38,11 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+
     //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     //Gson -> json data to java or kotlin format
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-
     // Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
